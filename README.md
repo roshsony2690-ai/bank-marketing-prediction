@@ -134,7 +134,6 @@ The top predictors of term deposit subscription are:
    - Customer summary
   
 ### 🏠 Home Page - Input Form  
-
  ┌─────────────────────────────────────────────────┐
 │          Bank Term Deposit Predictor            │
 ├─────────────────────────────────────────────────┤
