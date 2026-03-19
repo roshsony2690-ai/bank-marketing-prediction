@@ -59,11 +59,11 @@ Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the 
 
 | Metric | Score | Interpretation |
 |--------|-------|----------------|
-| **Accuracy** | 89% | Overall correct predictions |
-| **F1-Score** | 0.44 | Balance between precision and recall for minority class |
-| **ROC-AUC** | 0.85 | Excellent discrimination ability |
-| **Precision (Yes)** | 0.39 | When model predicts "yes", it's correct 39% of the time |
-| **Recall (Yes)** | 0.50 | Model captures 50% of actual "yes" cases |
+| **Accuracy** | 🟢 **89%** | Overall correct predictions |
+| **ROC-AUC** | 🟢 **0.85** | Excellent discrimination ability |
+| **F1-Score** | 🟡 **0.44** | Good for imbalanced data |
+| **Precision** | 🟡 **0.39** | When model says "yes", it's correct 39% of the time |
+| **Recall** | 🟡 **0.50** | Model captures 50% of actual "yes" cases | 
 
 ### Confusion Matrix
 
@@ -214,3 +214,4 @@ bank-marketing-prediction/
    ○ Scikit-learn: https://scikit-learn.org/  
    ○ Flask: https://flask.palletsprojects.com/  
    ○ Imbalanced-learn: https://imbalanced-learn.org/  
+
