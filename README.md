@@ -15,10 +15,10 @@ The project implements a complete machine learning pipeline including data prepr
 
 ## 📊 Dataset Information
 
-**Source**: UCI Machine Learning Repository - Bank Marketing Dataset  
-**Link**: [https://archive.ics.uci.edu/ml/datasets/Bank+Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing)
+**Source**: UCI Machine Learning Repository - Bank Marketing Dataset    
+**Link**: [https://archive.ics.uci.edu/ml/datasets/Bank+Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing)  
 
-**Citation**:  
+**Citation**:   
 Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the success of bank telemarketing." Decision Support Systems, 62, 22-31.
 
 ### Dataset Details
@@ -67,18 +67,18 @@ Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the 
 
 ### Confusion Matrix
 
-Predicted
-No / Yes
-Actual No 7185 800
-Actual Yes 529 529
+Predicted  
+No / Yes  
+Actual No 7185 800  
+Actual Yes 529 529   
 
 ### Classification Report
 
-precision recall f1-score support
-No 0.93 0.90 0.91 7985
-Yes 0.39 0.50 0.44 1058
-accuracy 0.85 9043
-
+precision recall f1-score support  
+No 0.93 0.90 0.91 7985  
+Yes 0.39 0.50 0.44 1058  
+accuracy 0.85 9043  
+  
 
 ---
 
@@ -111,15 +111,15 @@ The top predictors of term deposit subscription are:
 
 ## 🌐 Web Application
 
-### Prediction URL
-**http://127.0.0.1:5000/**
+### Prediction URL  
+**http://127.0.0.1:5000/**  
 
 ### API Endpoint
-**http://127.0.0.1:5000/api/predict**
+**http://127.0.0.1:5000/api/predict**  
+ 
+### How to Use  
 
-### How to Use
-
-#### Web Interface
+#### Web Interface  
 
 1. Navigate to the prediction URL
 2. Fill in the customer information form:
@@ -131,7 +131,7 @@ The top predictors of term deposit subscription are:
    - Prediction (Yes/No)
    - Probability percentage
    - Risk level (High/Medium/Low)
-   - Customer summary
+   - Customer summary  
 
 ## 📈 Business Impact Analysis
 
@@ -174,42 +174,43 @@ The top predictors of term deposit subscription are:
 • Optimization metric: F1-score
 • Best parameters for Random Forest:
   ◇ n_estimators: 100
-  ◇ max_depth: 10
+  ◇ max_depth: 10  
   ◇ min_samples_split: 10
   ◇ min_samples_leaf: 5
-  ◇ class_weight: 'balanced'
+  ◇ class_weight: 'balanced'  
 
-  ## 📁 Project Structure
-  bank-marketing-prediction/
-│
-├── app_simple.py                 # Flask web application
-├── requirements.txt               # Python dependencies
-├── .gitignore                     # Git ignore file
-├── README.md                      # Project documentation
-│
-├── models/                        # Trained model files
-│   ├── bank_marketing_model.pkl   # Random Forest model
-│   ├── bank_preprocessor.pkl      # Preprocessing pipeline
-│   └── feature_names.csv          # Feature names reference
-│
-└── templates/                     # HTML templates
-    ├── index.html                 # Input form
-    └── result.html                # Prediction result page
+  ## 📁 Project Structure  
+    
+bank-marketing-prediction/    
+│  
+├── app_simple.py # Flask web application   
+├── requirements.txt # Python dependencies  
+├── .gitignore # Git ignore file  
+├── README.md # Project documentation  
+│  
+├── models/ # Trained model files  
+│ ├── bank_marketing_model.pkl # Random Forest model  
+│ ├── bank_preprocessor.pkl # Preprocessing pipeline  
+│ └── feature_names.csv # Feature names reference  
+│  
+└── templates/ # HTML templates  
+├── index.html # Input form  
+└── result.html # Prediction result page  
+   
+## 📚 References   
 
-## 📚 References
+1.Dataset Source: 
+  UCI Machine Learning Repository  
+  https://archive.ics.uci.edu/ml/datasets/Bank+Marketing  
 
-1.Dataset Source:
-  UCI Machine Learning Repository
-  https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
+2.Academic Paper:  
+  Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the success of bank telemarketing." Decision Support Systems, 62, 22-31.  
+  https://www.sciencedirect.com/science/article/pii/S016792361400061X  
 
-2.Academic Paper:
-  Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the success of bank telemarketing." Decision Support Systems, 62, 22-31.
-  https://www.sciencedirect.com/science/article/pii/S016792361400061X
+3.SMOTE Technique:  
+  Chawla, N. V., Bowyer, K. W., Hall, L. O., & Kegelmeyer, W. P. (2002). "SMOTE: Synthetic Minority Over-sampling Technique." Journal of Artificial Intelligence     Research, 16, 321-357.  
 
-3.SMOTE Technique:
-  Chawla, N. V., Bowyer, K. W., Hall, L. O., & Kegelmeyer, W. P. (2002). "SMOTE: Synthetic Minority Over-sampling Technique." Journal of Artificial Intelligence Research, 16, 321-357.
-
-4.Documentation:
-   ○ Scikit-learn: https://scikit-learn.org/
-   ○ Flask: https://flask.palletsprojects.com/
-   ○ Imbalanced-learn: https://imbalanced-learn.org/
+4.Documentation:  
+   ○ Scikit-learn: https://scikit-learn.org/  
+   ○ Flask: https://flask.palletsprojects.com/  
+   ○ Imbalanced-learn: https://imbalanced-learn.org/  
