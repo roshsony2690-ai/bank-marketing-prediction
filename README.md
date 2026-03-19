@@ -134,26 +134,28 @@ The top predictors of term deposit subscription are:
    - Customer summary
   
 ### 🏠 Home Page - Input Form  
-┌─────────────────────────────────────────────────────────┐
-│              Bank Term Deposit Predictor                │
-├─────────────────────────────────────────────────────────┤
-│  📋 Personal Information                               │
-│  ┌──────────────────────┐  ┌──────────────────────────┐ │
-│  │ Age: 35              │  │ Job: Manager             │ │
-│  └──────────────────────┘  └──────────────────────────┘ │
-│                                                         │
-│  💰 Financial Information                              │
-│  ┌──────────────────────┐  ┌──────────────────────────┐ │
-│  │ Balance: 2500        │  │ Default: No              │ │
-│  └──────────────────────┘  └──────────────────────────┘ │
-│                                                         │
-│  📞 Campaign Information                               │
-│  ┌──────────────────────┐  ┌──────────────────────────┐ │
-│  │ Month: May           │  │ Day: 15                  │ │
-│  └──────────────────────┘  └──────────────────────────┘ │
-│                                                         │
-│                [ Predict Subscription ]                 │
-└─────────────────────────────────────────────────────────┘
+```
++-------------------------------------------------------+
+|            Bank Term Deposit Predictor                |
++-------------------------------------------------------+
+|  Personal Information                                 |
+|  +--------------------+  +--------------------------+ |
+|  | Age: 35            |  | Job: Manager             | |
+|  +--------------------+  +--------------------------+ |
+|                                                       |
+|  Financial Information                                |
+|  +--------------------+  +--------------------------+ |
+|  | Balance: 2500      |  | Default: No              | |
+|  +--------------------+  +--------------------------+ |
+|                                                       |
+|  Campaign Information                                 |
+|  +--------------------+  +--------------------------+ |
+|  | Month: May         |  | Day: 15                  | |
+|  +--------------------+  +--------------------------+ |
+|                                                       |
+|              [ Predict Subscription ]                 |
++-------------------------------------------------------+
+```
 
 ### 📊 Result Page 
 ```
@@ -164,11 +166,11 @@ The top predictors of term deposit subscription are:
 |   Probability : 67.5%                                 |
 |   Risk Level  : High                                  |
 |                                                       |
-|   Customer Summary                                   |
-|   Age: 35 | Job: Management | Balance: 2500          |
-|   Month: May | Previous: Success                     |
+|   Customer Summary                                    |
+|   Age: 35 | Job: Management | Balance: 2500           |
+|   Month: May | Previous: Success                      |
 |                                                       |
-|        [ Make Another Prediction ]                   |
+|        [ Make Another Prediction ]                    |
 +-------------------------------------------------------+
 ```
 ## 📸 Screenshots
