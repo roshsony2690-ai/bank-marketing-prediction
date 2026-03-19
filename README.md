@@ -156,24 +156,21 @@ The top predictors of term deposit subscription are:
 └─────────────────────────────────────────────────────────┘
 
 ### 📊 Result Page 
-
-┌─────────────────────────────────────────────────────────┐
-│                    Prediction Result                    │
-├─────────────────────────────────────────────────────────┤
-│  Status        : ✅ Will Subscribe                      │
-│  Probability   : 67.5%                                  │
-│  Risk Level    : 🔴 High                                │
-│                                                         │
-│  ───────────────── Customer Summary ─────────────────   │
-│  Age           : 35                                     │
-│  Job           : Management                             │
-│  Balance       : €2,500                                 │
-│  Month         : May                                    │
-│  Previous      : Success                                │
-│                                                         │
-│        [ ← Make Another Prediction ]                    │
-└─────────────────────────────────────────────────────────┘
-
+```
++-------------------------------------------------------+
+|                 Prediction Result                     |
++-------------------------------------------------------+
+|   Status      : Will Subscribe                        |
+|   Probability : 67.5%                                 |
+|   Risk Level  : High                                  |
+|                                                       |
+|   Customer Summary                                   |
+|   Age: 35 | Job: Management | Balance: 2500          |
+|   Month: May | Previous: Success                     |
+|                                                       |
+|        [ Make Another Prediction ]                   |
++-------------------------------------------------------+
+```
 ## 📸 Screenshots
 
 <img width="1320" height="1087" alt="Screenshot 2026-03-19 224738" src="https://github.com/user-attachments/assets/b910f304-0fbb-4e45-a5d0-8444e60bc55e" />
