@@ -215,3 +215,6 @@ bank-marketing-prediction/
    ○ Flask: https://flask.palletsprojects.com/  
    ○ Imbalanced-learn: https://imbalanced-learn.org/  
 
+   <img width="1320" height="1087" alt="Screenshot 2026-03-19 224738" src="https://github.com/user-attachments/assets/3dc75dcc-b0aa-46d9-b85b-429abaf1f5e1" />
+
+
