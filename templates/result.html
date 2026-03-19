@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .result-box {
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .yes {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+        }
+        .no {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border: 2px solid #dc3545;
+        }
+        h2 {
+            margin: 0 0 20px 0;
+            font-size: 28px;
+        }
+        .probability {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .risk-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .risk-high { background: #dc3545; color: white; }
+        .risk-medium { background: #ffc107; color: black; }
+        .risk-low { background: #28a745; color: white; }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 30px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .details {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .detail-value {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Prediction Result</h1>
+        
+        <div class="result-box {{ 'yes' if prediction == 'Yes' else 'no' }}">
+            <h2>{{ '✅ Will Subscribe to Term Deposit' if prediction == 'Yes' else '❌ Will Not Subscribe' }}</h2>
+            
+            <div class="probability">{{ "%.2f"|format(probability|float) }}%</div>
+            
+            {% set risk_level = 'High' if probability|float > 60 else 'Medium' if probability|float > 30 else 'Low' %}
+            {% set risk_class = 'risk-high' if risk_level == 'High' else 'risk-medium' if risk_level == 'Medium' else 'risk-low' %}
+            
+            <div class="risk-badge {{ risk_class }}">
+                Risk Level: {{ risk_level }}
+            </div>
+        </div>
+        
+        <div class="details">
+            <h3 style="margin-top:0">📋 Customer Summary</h3>
+            <div class="detail-row">
+                <span class="detail-label">Age:</span>
+                <span class="detail-value">{{ form_data.get('age', 'N/A') }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Job:</span>
+                <span class="detail-value">{{ form_data.get('job', 'N/A') }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Marital:</span>
+                <span class="detail-value">{{ form_data.get('marital', 'N/A') }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Education:</span>
+                <span class="detail-value">{{ form_data.get('education', 'N/A') }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Balance:</span>
+                <span class="detail-value">€{{ "%.2f"|format(form_data.get('balance', 0)|float) }}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Month:</span>
+                <span class="detail-value">{{ form_data.get('month', 'N/A')|upper }}</span>
+            </div>
+        </div>
+        
+        <a href="/" class="button">← Make Another Prediction</a>
+    </div>
+</body>
+</html>

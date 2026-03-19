@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction History{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-history"></i> Recent Predictions
+                <button class="btn btn-sm btn-danger float-end" onclick="clearHistory()">
+                    <i class="fas fa-trash"></i> Clear History
+                </button>
+            </div>
+            <div class="card-body">
+                {% if predictions %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Timestamp</th>
+                                <th>Age</th>
+                                <th>Job</th>
+                                <th>Prediction</th>
+                                <th>Probability</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pred in predictions %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ pred.timestamp }}</td>
+                                <td>{{ pred.age }}</td>
+                                <td>{{ pred.job }}</td>
+                                <td>
+                                    <span class="badge {% if pred.prediction == 'Yes' %}bg-success{% else %}bg-danger{% endif %}">
+                                        {{ pred.prediction }}
+                                    </span>
+                                </td>
+                                <td>{{ pred.probability }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info" onclick="reusePrediction('{{ pred | tojson | safe }}')">
+                                        <i class="fas fa-redo"></i> Reuse
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-history fa-4x text-muted mb-3"></i>
+                    <h4>No prediction history yet</h4>
+                    <p class="text-muted">Your recent predictions will appear here</p>
+                    <a href="/" class="btn btn-primary mt-3">
+                        <i class="fas fa-edit"></i> Make a Prediction
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Stats Card -->
+        {% if predictions %}
+        <div class="card mt-4">
+            <div class="card-header bg-success text-white">
+                <i class="fas fa-chart-bar"></i> Quick Stats
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h3>{{ predictions|length }}</h3>
+                        <p class="text-muted">Total Predictions</p>
+                    </div>
+                    <div class="col-md-4">
+                        {% set yes_count = predictions | selectattr('prediction', 'equalto', 'Yes') | list | length %}
+                        <h3>{{ yes_count }}</h3>
+                        <p class="text-muted">Will Subscribe</p>
+                    </div>
+                    <div class="col-md-4">
+                        {% set no_count = predictions | selectattr('prediction', 'equalto', 'No') | list | length %}
+                        <h3>{{ no_count }}</h3>
+                        <p class="text-muted">Will Not Subscribe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function clearHistory() {
+    if (confirm('Are you sure you want to clear all prediction history?')) {
+        fetch('/clear_history', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while clearing history');
+        });
+    }
+}
+
+function reusePrediction(pred) {
+    // Store prediction data in session storage
+    sessionStorage.setItem('reusePrediction', JSON.stringify(pred));
+    window.location.href = '/';
+}
+</script>
+{% endblock %}

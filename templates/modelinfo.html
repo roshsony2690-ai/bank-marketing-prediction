@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}Model Information{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <!-- Model Status Card -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-robot"></i> Model Information
+            </div>
+            <div class="card-body">
+                <div class="alert {% if model_info.model_loaded %}alert-success{% else %}alert-warning{% endif %}">
+                    <i class="fas {% if model_info.model_loaded %}fa-check-circle{% else %}fa-exclamation-triangle{% endif %}"></i>
+                    <strong>Status:</strong> {{ model_info.mode }} Mode
+                    {% if not model_info.model_loaded %}
+                    <br><small>Using demo mode with random predictions</small>
+                    {% endif %}
+                </div>
+                
+                <table class="table table-striped">
+                    <tr>
+                        <th>Model Loaded:</th>
+                        <td>
+                            {% if model_info.model_loaded %}
+                            <span class="badge bg-success">Yes</span>
+                            {% else %}
+                            <span class="badge bg-danger">No</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Preprocessor Loaded:</th>
+                        <td>
+                            {% if model_info.preprocessor_loaded %}
+                            <span class="badge bg-success">Yes</span>
+                            {% else %}
+                            <span class="badge bg-danger">No</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Total Features:</th>
+                        <td>{{ model_info.feature_count }}</td>
+                    </tr>
+                    <tr>
+                        <th>Model Type:</th>
+                        <td>
+                            {% if model_info.metadata and model_info.metadata.best_model_name %}
+                            {{ model_info.metadata.best_model_name }}
+                            {% else %}
+                            Random Forest (Default)
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% if model_info.metadata %}
+                    <tr>
+                        <th>F1-Score:</th>
+                        <td>{{ model_info.metadata.f1_score }}</td>
+                    </tr>
+                    <tr>
+                        <th>ROC-AUC:</th>
+                        <td>{{ model_info.metadata.roc_auc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Training Date:</th>
+                        <td>{{ model_info.metadata.training_date }}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+        
+        <!-- Feature List Card -->
+        <div class="card mt-4">
+            <div class="card-header bg-info text-white">
+                <i class="fas fa-list"></i> Feature List (First 20)
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for feature in model_info.feature_list %}
+                    <div class="col-md-6">
+                        <div class="feature-item mb-2">
+                            <i class="fas fa-tag text-primary me-2"></i> {{ feature }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if model_info.feature_count > 20 %}
+                <p class="text-muted mt-3">... and {{ model_info.feature_count - 20 }} more features</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- API Information Card -->
+        <div class="card mt-4">
+            <div class="card-header bg-success text-white">
+                <i class="fas fa-code"></i> API Endpoint
+            </div>
+            <div class="card-body">
+                <p>You can also use the API endpoint for programmatic access:</p>
+                <div class="bg-dark text-light p-3 rounded">
+                    <pre><code>POST /api/predict
+Content-Type: application/json
+
+{
+    "age": 35,
+    "job": "management",
+    "marital": "married",
+    "education": "tertiary",
+    "default": "no",
+    "balance": 2500,
+    "housing": "yes",
+    "loan": "no",
+    "day": 15,
+    "month": "may",
+    "campaign": 2,
+    "pdays": -1,
+    "previous": 0,
+    "poutcome": "unknown"
+}</code></pre>
+                </div>
+                <p class="mt-3">
+                    <a href="#" onclick="testAPI()" class="btn btn-sm btn-success">
+                        <i class="fas fa-play"></i> Test API
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function testAPI() {
+    const testData = {
+        age: 35,
+        job: "management",
+        marital: "married",
+        education: "tertiary",
+        default: "no",
+        balance: 2500,
+        housing: "yes",
+        loan: "no",
+        day: 15,
+        month: "may",
+        campaign: 2,
+        pdays: -1,
+        previous: 0,
+        poutcome: "unknown"
+    };
+    
+    fetch('/api/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(testData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast(`API Response: ${data.prediction} (${data.probability_percentage})`, 'success');
+        } else {
+            showToast(`API Error: ${data.error}`, 'error');
+        }
+    })
+    .catch(error => {
+        showToast(`Error: ${error}`, 'error');
+    });
+}
+</script>
+{% endblock %}
