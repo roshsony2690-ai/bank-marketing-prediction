@@ -22,7 +22,7 @@ The project implements a complete machine learning pipeline including data prepr
 Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the success of bank telemarketing." Decision Support Systems, 62, 22-31.
 
 ### Dataset Details
-- **Total Samples**: 45,211 customer records
+- **Total Samples**: 45,211 customer records  
 - **Training Set**: 36,168 samples (80%)
 - **Test Set**: 9,043 samples (20%)
 - **Class Distribution**: 
@@ -101,11 +101,11 @@ The top predictors of term deposit subscription are:
 
 ### Key Insights
 
-- **Previous campaign success** is the strongest predictor - customers who subscribed before are 3x more likely to subscribe again
-- **Seasonal patterns** matter - May and June show 40% higher conversion rates than December
-- **Financial health** indicators - customers with higher balances (>5000 euros) are 2.5x more likely to subscribe
-- **Loan burden** reduces probability - customers with both housing and personal loans are 60% less likely to subscribe
-- **Age groups** show distinct patterns - students and retired people have 35% higher conversion rates
+- **Previous campaign success** is the strongest predictor - customers who subscribed before are 3x more likely to subscribe again  
+- **Seasonal patterns** matter - May and June show 40% higher conversion rates than December  
+- **Financial health** indicators - customers with higher balances (>5000 euros) are 2.5x more likely to subscribe  
+- **Loan burden** reduces probability - customers with both housing and personal loans are 60% less likely to subscribe  
+- **Age groups** show distinct patterns - students and retired people have 35% higher conversion rates  
 
 ---
 
@@ -120,43 +120,43 @@ The top predictors of term deposit subscription are:
 ### How to Use  
 
 #### Web Interface  
-
-1. Navigate to the prediction URL
-2. Fill in the customer information form:
-   - Personal details (age, job, marital status, education)
-   - Financial information (balance, loans, default status)
-   - Campaign details (contact month/day, previous outcomes)
+ 
+1. Navigate to the prediction URL  
+2. Fill in the customer information form:  
+   - Personal details (age, job, marital status, education)  
+   - Financial information (balance, loans, default status)  
+   - Campaign details (contact month/day, previous outcomes)  
 3. Click "Predict Subscription"
 4. View instant results with:
-   - Prediction (Yes/No)
+   - Prediction (Yes/No)  
    - Probability percentage
    - Risk level (High/Medium/Low)
    - Customer summary  
 
 ## 📈 Business Impact Analysis
 
-#### Cost Savings
-• Targeted marketing: Reduce calls by 60% by targeting only top 40% of prospects
-• Estimated savings: €50,000 per 100,000 calls (based on €0.50 per call cost)
-• Annual projection: €500,000 savings for a bank making 1 million calls/year
+#### Cost Savings  
+• Targeted marketing: Reduce calls by 60% by targeting only top 40% of prospects  
+• Estimated savings: €50,000 per 100,000 calls (based on €0.50 per call cost)  
+• Annual projection: €500,000 savings for a bank making 1 million calls/year  
 
-#### Revenue Increase
-• Conversion improvement: From 11.7% to 28% with targeted campaigns
-• Additional conversions: +1,630 subscriptions per 10,000 targeted calls
-• Revenue impact: €326,000 additional revenue (assuming €200 per subscription)
+#### Revenue Increase  
+• Conversion improvement: From 11.7% to 28% with targeted campaigns  
+• Additional conversions: +1,630 subscriptions per 10,000 targeted calls  
+• Revenue impact: €326,000 additional revenue (assuming €200 per subscription)    
+   
+#### ROI Calculation  
+• Implementation cost: €20,000 (development + integration)  
+• Annual benefit: €826,000 (savings + additional revenue)  
+• ROI: 4,030% in first year  
 
-#### ROI Calculation
-• Implementation cost: €20,000 (development + integration)
-• Annual benefit: €826,000 (savings + additional revenue)
-• ROI: 4,030% in first year
-
-## 🛠️ Technical Implementation
-
-#### Data Preprocessing
-• Handling 'unknown' values in categorical features
-• One-hot encoding for categorical variables
-• StandardScaler for numerical features
-• SMOTE for handling class imbalance
+## 🛠️ Technical Implementation  
+    
+#### Data Preprocessing  
+• Handling 'unknown' values in categorical features   
+• One-hot encoding for categorical variables   
+• StandardScaler for numerical features   
+• SMOTE for handling class imbalance  
 
 #### Algorithms Tested
 
@@ -170,14 +170,14 @@ The top predictors of term deposit subscription are:
 
 ## Hyperparameter Tuning
 
-• GridSearchCV with 5-fold cross-validation
-• Optimization metric: F1-score
-• Best parameters for Random Forest:
-  ◇ n_estimators: 100
-  ◇ max_depth: 10  
-  ◇ min_samples_split: 10
-  ◇ min_samples_leaf: 5
-  ◇ class_weight: 'balanced'  
+• GridSearchCV with 5-fold cross-validation   
+• Optimization metric: F1-score   
+• Best parameters for Random Forest:  
+  ◇ n_estimators: 100   
+  ◇ max_depth: 10     
+  ◇ min_samples_split: 10  
+  ◇ min_samples_leaf: 5  
+  ◇ class_weight: 'balanced'    
 
   ## 📁 Project Structure  
     
@@ -204,7 +204,7 @@ bank-marketing-prediction/
   https://archive.ics.uci.edu/ml/datasets/Bank+Marketing  
 
 2.Academic Paper:  
-  Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the success of bank telemarketing." Decision Support Systems, 62, 22-31.  
+  Moro, S., Cortez, P., & Rita, P. (2014). "A data-driven approach to predict the success of bank telemarketing." Decision Support Systems, 62, 22-31.     
   https://www.sciencedirect.com/science/article/pii/S016792361400061X  
 
 3.SMOTE Technique:  
